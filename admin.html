@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice Shop | Admin Panel</title>
+    <link href="style.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="./pics1/Shop.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .item-container {
+            display: inline-block;
+            width: 200px;
+            margin: 50px;
+            padding: 20px;
+            box-shadow: 2px 2px 12px 4px rgba(0, 0, 0, 0.12);
+            position: relative;
+            text-align: center;
+        }
+
+        .item-name, .item-price {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .item-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .item-remove-button {
+            bottom: 10px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar1">
+        <img src="./pics1/admin.png" style="width: 15%;">
+    </div>
+
+    <div class="container">
+        <h1 class="mt-5">Admin Page</h1>
+        <form id="item-form">
+            <div class="mb-3">
+                <label for="itemName" class="form-label">Item Name</label>
+                <input type="text" class="form-control" id="itemName" required>
+            </div>
+            <div class="mb-3">
+                <label for="itemPrice" class="form-label">Item Price</label>
+                <input type="number" class="form-control" id="itemPrice" required>
+            </div>
+            <div class="mb-3">
+                <label for="itemImage" class="form-label">Item Image</label>
+                <input type="file" class="form-control" id="itemImage" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Item</button>
+            <button type="button" class="btn btn-danger ms-2" id="clearItems">Clear All Items</button>
+        </form>
+    
+        <div id="adminItems">
+            <!-- Admin items will be dynamically added here -->
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Clear existing items before displaying from local storage
+            document.getElementById('adminItems').innerHTML = '';
+
+            // Load items from local storage when the page loads
+            const items = JSON.parse(localStorage.getItem('shopItems')) || [];
+            items.forEach(item => displayAdminItem(item)); // Display each item
+
+            // Add event listener to the form for adding items
+            document.getElementById('item-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Get form values
+                const itemName = document.getElementById('itemName').value;
+                const itemPrice = document.getElementById('itemPrice').value;
+                const itemImage = document.getElementById('itemImage').files[0]; // Get the selected file
+
+                // Read the selected file and convert it to a data URL
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const imageDataUrl = event.target.result;
+
+                    // Create a new item object with the image data URL
+                    const newItem = { name: itemName, price: itemPrice, imageDataUrl: imageDataUrl };
+
+                    // Add the new item to the admin display section and local storage
+                    displayAdminItem(newItem);
+                    items.push(newItem);
+                    localStorage.setItem('shopItems', JSON.stringify(items));
+                };
+                reader.readAsDataURL(itemImage);
+
+                // Clear the form fields
+                document.getElementById('itemName').value = '';
+                document.getElementById('itemPrice').value = '';
+                document.getElementById('itemImage').value = '';
+            });
+
+            // Add event listener to clear all items button
+            document.getElementById('clearItems').addEventListener('click', function() {
+                localStorage.removeItem('shopItems'); // Clear local storage
+                document.getElementById('adminItems').innerHTML = ''; // Clear admin display
+            });
+        });
+
+        // Function to display an item on the admin page
+        function displayAdminItem(item) {
+            const adminItemsContainer = document.getElementById('adminItems');
+
+            // Create HTML elements for the item
+            const itemContainer = document.createElement('div');
+            itemContainer.classList.add('item-container');
+
+            const itemImage = document.createElement('img');
+            itemImage.classList.add('item-image');
+            itemImage.src = item.imageDataUrl;
+
+            const itemName = document.createElement('span');
+            itemName.classList.add('item-name');
+            itemName.textContent = `Name: ${item.name}`;
+
+            const itemPrice = document.createElement('span');
+            itemPrice.classList.add('item-price');
+            itemPrice.textContent = `Price: ${item.price} THB`;
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.classList.add('btn', 'btn-danger', 'item-remove-button');
+            removeButton.addEventListener('click', function() {
+                // Remove the item from the admin display section
+                adminItemsContainer.removeChild(itemContainer);
+
+                // Remove the item from local storage
+                const items = JSON.parse(localStorage.getItem('shopItems')) || [];
+                const index = items.findIndex(i => i.name === item.name && i.price === item.price);
+                if (index !== -1) {
+                    items.splice(index, 1);
+                    localStorage.setItem('shopItems', JSON.stringify(items));
+                }
+            });
+
+            // Append elements to the item container
+            itemContainer.appendChild(itemImage);
+            itemContainer.appendChild(itemName);
+            itemContainer.appendChild(itemPrice);
+            itemContainer.appendChild(removeButton);
+
+            // Append the item container to the admin items container
+            adminItemsContainer.appendChild(itemContainer);
+        }
+    </script>
+</body>
+</html>
