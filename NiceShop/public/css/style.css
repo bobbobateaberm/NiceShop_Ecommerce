@@ -1,0 +1,260 @@
+body{
+    margin: 0; 
+    padding: 0; 
+}
+
+
+.navbar1 {
+  background-color: #e0520f;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+}
+.navbar h1 {
+    margin: 0;
+}
+.cart-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+.container {
+    padding: 20px;
+}
+.products {
+    display: flex;
+    gap: 20px;
+}
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #fff;
+}
+
+#cart-items {
+    display: none;
+}
+#cart-items ul {
+    list-style-type: none;
+    padding: 0;
+}
+#cart-items li {
+    background: #eee;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+
+
+  iframe {
+    width: 100%;
+  }
+  
+  @media (min-width: 992px) {
+    .position-relative {
+      position: relative;
+      height: 0;
+      padding-top: 56.25%; /* 16:9 aspect ratio */
+    }
+  }
+
+.font1 {
+  font-size: 50px;
+  font-weight: 700;
+  color: black;
+
+}
+.font2 {
+  font-size: 30px;
+  color: black;
+
+}
+.item {
+  position: relative;
+  width: 90%; /* Adjust as needed */
+  max-width: 800px; /* Maximum width */
+  height: auto; /* Let the height adjust according to content */
+  border-radius: 27px;
+  margin: 1%; /* Adjust as needed */
+  display: inline-block;
+  background: white;
+}
+
+.item:hover {
+  transition: border 0.05s; /* Smooth transition for hover effect */
+  border: #e0520f solid 3px;
+}
+
+.item:after {
+  content: "";
+  display: block;
+  padding-bottom: 50%; /* Aspect ratio (300px / 500px * 100%) */
+}
+
+
+
+/* Example media query for larger screens */
+@media screen and (min-width: 768px) {
+  .item {
+    width: 45%; /* Adjust as needed */
+    margin: 1%; /* Adjust as needed */
+  }
+}
+.button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+  background-color: #e0520f;
+  color: #fff;
+  border: none;
+  border-radius: 50%; /* Set border-radius to 50% for circle shape */
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 60px; /* Center the text vertically */
+  text-align: center; /* Center the text horizontally */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.button:focus {
+  outline: none; /* Remove default focus outline */
+}
+
+.button:hover {
+  background-color: #c7410d; /* Darker shade on hover */
+}
+
+.button:active {
+  background-color: #9c2e0b; /* Even darker shade on click */
+}
+
+
+
+
+/* Style for the text and image container */
+.content {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  
+}
+
+/* Style for the image */
+.content img {
+  max-width: 100%; /* Adjust as needed */
+  max-height: 100%; /* Adjust as needed */
+  flex: 0 0 auto;
+  margin-right: 20px;
+  border-radius: 27px;
+}
+
+/* Style for the text */
+.content p {
+  margin: 0;
+  font-size: 18px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.image-box {
+  width: 100%;
+  height: 800px; /* Adjust height as needed */
+  overflow: hidden;
+  position: relative;
+  margin-top: 90px;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.but1{
+
+  background-color: rgb(28, 131, 45);
+  border-radius: 10%;
+  border: 0;
+  font-weight: 550;
+  font-size: 20px;
+  padding: 10px;
+  color: #fff;
+}
+.but2{
+
+  background-color: #a81418;
+  border-radius: 10%;
+  border: 0;
+  font-weight: 550;
+  font-size: 20px;
+  padding: 10px;
+  color: #fff;
+}
+.but3{
+
+  background-color: #dddddd;
+  border-radius: 10%;
+  border: 0;
+  font-weight: 550;
+  font-size: 20px;
+  padding: 10px;
+  color: #000000;
+}
+.but1:hover{
+
+  background-color: rgb(17, 78, 27);
+  border-radius: 10%;
+  border: 0;
+  transition: background-color 0.3s;
+
+  font-size: 20px;
+  padding: 10px;
+  color: #fff;
+
+}
+.but3:hover{
+
+  background-color: #afafaf;
+  border-radius: 10%;
+  border: 0;
+  font-weight: 550;
+  font-size: 20px;
+  padding: 10px;
+  color: #000000;
+  transition: background-color 0.3s;
+
+}
+.but2:hover{
+
+  background-color: #5c090c;
+  border-radius: 10%;
+  border: 0;
+  font-weight: 550;
+  font-size: 20px;
+  padding: 10px;
+  color: #fff;
+  transition: background-color 0.3s;
+}
