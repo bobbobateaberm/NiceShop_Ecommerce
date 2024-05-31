@@ -1,0 +1,7 @@
+{
+    "routes": [
+      { "src": "/adminpage", "dest": "/public/adminpage/index.html" },
+      { "src": "/shoppage", "dest": "/public/shoppage/index.html" },
+      { "src": "/(.*)", "dest": "/public$1/index.html" }
+    ]
+  }
