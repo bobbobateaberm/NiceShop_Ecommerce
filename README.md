@@ -26,5 +26,4 @@ The Admin panel is designed for shop management:
 
 ---
 
-## 📂 Repository Structure
 
