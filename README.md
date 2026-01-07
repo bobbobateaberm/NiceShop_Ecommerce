@@ -24,6 +24,10 @@ The Admin panel is designed for shop management:
 - **Order Management** – View and track customer orders.  
 - **Inventory Management** – Perform CRUD operations (Create, Read, Update, Delete) on products.  
 
+### Front-end usage / Demo
+In public folder , there are demo of this websites using DOM manipulation and session management.
+- To navigate , simply adding /admin.html or /index.html at the back of the search session
+> https://niceshop-ecommerce.vercel.app/
 ---
 
 
