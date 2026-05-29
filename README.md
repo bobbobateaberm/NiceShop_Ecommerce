@@ -1,4 +1,4 @@
-# Smoothie Shop Web App - Source Code
+# Smoothie Shop Web App - Source Code ( August 2024 )
 
 This repository contains the **source code** for a web application inspired by my mother’s smoothie shop and projects from senior open house fairs. 
 
