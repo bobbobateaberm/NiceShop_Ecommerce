@@ -2,11 +2,11 @@
 
 This repository contains the **source code** for a web application inspired by my mother’s smoothie shop and projects from senior open house fairs. 
 
-> ⚠️ **Note:** This project is no longer hosted online. This repository contains only the source code for reference and learning purposes.
+> **Note:** This project is no longer hosted online. This repository contains only the source code for reference and learning purposes.
 
 ---
 
-## 🛠️ Project Overview
+##  Project Overview
 
 This project serves as an introduction to developing web applications for organizations. It includes a basic e-commerce system with two main sections:
 
